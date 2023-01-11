@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from "react";
+import { FC, useEffect } from "react";
 
 const Logo: FC<{ track?: boolean }> = ({ track }) => {
   useEffect(() => {

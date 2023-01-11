@@ -30,6 +30,10 @@ export default function Document() {
         />
         <link rel="shortcut icon" href="/icons/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#ffffff" />
+        <meta
+          name="keywords"
+          content="Hackathon, Hackathon matching, Hackathon events, Find hackathon, Community, Find peers, Find team"
+        />
       </Head>
       <body className="bg-[#FAF9F9] dark:bg-slate-900 transition-colors duration-200 text-black dark:text-white">
         <Main />
