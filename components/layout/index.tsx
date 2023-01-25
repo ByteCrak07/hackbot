@@ -1,15 +1,31 @@
 import { FC, ReactNode, useEffect } from "react";
-import { Jost, Press_Start_2P } from "@next/font/google";
+import {
+  Inconsolata,
+  Jost,
+  Press_Start_2P,
+  Quicksand,
+} from "@next/font/google";
 import Header from "./header";
 import Footer from "./footer";
+import { useRouter } from "next/router";
 
 const jost = Jost({
+  subsets: ["latin"],
+});
+
+const quicksand = Quicksand({
+  subsets: ["latin"],
+});
+
+const inconsolata = Inconsolata({
   subsets: ["latin"],
 });
 
 const press_start_2p = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+  const router = useRouter();
+
   useEffect(() => {
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark");
@@ -30,13 +46,21 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 
           :root {
             --font-jost: ${jost.style.fontFamily};
+            --font-quicksand: ${quicksand.style.fontFamily};
+            --font-inconsolata: ${inconsolata.style.fontFamily};
             --font-press_start_2p: ${press_start_2p.style.fontFamily};
           }
         `}
       </style>
 
       <Header />
-      <main className="mt-16  flex flex-col flex-grow">{children}</main>
+      <main
+        className={`flex flex-col flex-grow font-jost ${
+          router.pathname === "/" ? "" : "mt-16"
+        }`}
+      >
+        {children}
+      </main>
       <Footer />
     </>
   );

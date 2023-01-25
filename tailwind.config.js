@@ -11,6 +11,8 @@ module.exports = {
     extend: {
       fontFamily: {
         jost: ["var(--font-jost)"],
+        quicksand: ["var(--font-quicksand)"],
+        terminal: ["var(--font-inconsolata)"],
         retro: ["var(--font-press_start_2p)"],
       },
     },

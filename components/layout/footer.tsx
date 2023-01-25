@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const AppFooter: FC = () => (
   <Footer container={true}>
-    <div className="w-full">
+    <div className="w-full font-jost">
       <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div className="w-48">
           <Link href="/">
@@ -23,7 +23,12 @@ const AppFooter: FC = () => (
           <div>
             <Footer.Title title="Follow us" />
             <Footer.LinkGroup col={true}>
-              <Footer.Link href="#">Github</Footer.Link>
+              <Footer.Link
+                href="https://github.com/ByteCrak07/hackbot"
+                target="_blank"
+              >
+                Github
+              </Footer.Link>
               <Footer.Link href="#">Discord</Footer.Link>
             </Footer.LinkGroup>
           </div>
@@ -47,7 +52,10 @@ const AppFooter: FC = () => (
           <Footer.Icon href="#" icon={BsFacebook} />
           <Footer.Icon href="#" icon={BsInstagram} />
           <Footer.Icon href="#" icon={BsTwitter} />
-          <Footer.Icon href="#" icon={BsGithub} />
+          <Footer.Icon
+            href="https://github.com/ByteCrak07/hackbot"
+            icon={BsGithub}
+          />
           <Footer.Icon href="#" icon={BsDiscord} />
         </div>
       </div>

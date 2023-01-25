@@ -1,8 +1,9 @@
 import { Button } from "flowbite-react";
+import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 
-export default function PageNotFound() {
+const PageNotFound: NextPage = () => {
   return (
     <>
       <NextSeo title="404" />
@@ -25,4 +26,6 @@ export default function PageNotFound() {
       </div>
     </>
   );
-}
+};
+
+export default PageNotFound;
