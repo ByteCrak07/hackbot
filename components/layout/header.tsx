@@ -5,6 +5,8 @@ import { Navbar, Dropdown, Avatar, Button } from "flowbite-react";
 import DarkModeBtn from "./dark-mode-btn";
 import { useRouter } from "next/router";
 import throttle from "lodash/throttle";
+import NavbarLink from "../ui/flowbite-custom/navbar-link";
+import NavbarBrand from "../ui/flowbite-custom/navbar-brand";
 
 const Header: FC<{}> = () => {
   const [user, setUser] = useState<null | { name: string; username: string }>(
@@ -26,11 +28,14 @@ const Header: FC<{}> = () => {
         }
       }, 200);
 
+      checkScroll();
       window.addEventListener("scroll", checkScroll);
 
       return () => {
         window.removeEventListener("scroll", checkScroll);
       };
+    } else {
+      setTransparentHeader(false);
     }
   }, [router, transparentHeader]);
 
@@ -41,6 +46,7 @@ const Header: FC<{}> = () => {
   ];
 
   const menus = [
+    { title: "Home", link: "/" },
     { title: "Hackathons", link: "/hackathons" },
     { title: "Events", link: "/events" },
     { title: "About", link: "/about" },
@@ -58,11 +64,11 @@ const Header: FC<{}> = () => {
           transparentHeader ? "bg-opacity-0 dark:bg-opacity-0" : ""
         }`}
       >
-        <Navbar.Brand href="/">
+        <NavbarBrand href="/">
           <div className="w-48">
             <Logo track />
           </div>
-        </Navbar.Brand>
+        </NavbarBrand>
         <div className="flex justify-end md:order-2 z-50 md:w-36">
           <div className="hidden md:block">
             {transparentHeader ? null : <DarkModeBtn type="button" />}
@@ -113,9 +119,13 @@ const Header: FC<{}> = () => {
         </div>
         <Navbar.Collapse className="bg-white dark:bg-gray-800 md:bg-transparent dark:md:bg-transparent">
           {menus.map((menu, i) => (
-            <Navbar.Link key={`menu ${i}`} href={menu.link} active={i === 0}>
+            <NavbarLink
+              key={`menu ${i}`}
+              href={menu.link}
+              active={menu.link === router.pathname}
+            >
               {menu.title}
-            </Navbar.Link>
+            </NavbarLink>
           ))}
           <div className="md:hidden flex gap-x-4 py-3 px-3 text-black dark:text-white text-opacity-80 dark:text-opacity-60">
             <div>Theme</div>
