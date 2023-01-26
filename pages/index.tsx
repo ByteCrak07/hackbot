@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import TerminalText from "../components/home/terminal-text";
-import HackathonCard from "../components/ui/hackathon-card";
-import LoadingCard from "../components/ui/loading-card";
+import HackathonCard from "../components/ui/cards/hackathon";
+import LoadingCard from "../components/ui/cards/hackathon-loading";
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -83,6 +83,8 @@ const Home: NextPage = () => {
             <HackathonCard />
           </div>
         </div>
+
+        {/* <img src="/blh.svg" /> */}
       </section>
     </>
   );

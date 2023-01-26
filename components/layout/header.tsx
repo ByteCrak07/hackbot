@@ -41,10 +41,9 @@ const Header: FC<{}> = () => {
   ];
 
   const menus = [
-    { title: "Home", link: "/home" },
-    { title: "About", link: "/about" },
     { title: "Hackathons", link: "/hackathons" },
     { title: "Events", link: "/events" },
+    { title: "About", link: "/about" },
   ];
 
   return (
