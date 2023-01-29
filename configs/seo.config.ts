@@ -1,10 +1,10 @@
 import { DefaultSeoProps } from "next-seo";
 
 const SEOconfig: DefaultSeoProps = {
-  defaultTitle: "HackBot - Discover your ideal hackathon",
+  defaultTitle: "HackBot - Discover your perfect hackathon and events",
   titleTemplate: "%s | HackBot",
   description:
-    "HackBot is a platform matching talented people with their ideal hackathon. Browse through a curated list of hackathons, create a profile, showcase your skills, and apply to events.",
+    "HackBot matches talented people with their perfect hackathon. Browse our curated list of hackathons, create a profile, showcase your skills and explore events.",
   openGraph: {
     type: "website",
     locale: "en_IN",

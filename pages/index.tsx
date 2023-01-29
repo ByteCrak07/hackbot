@@ -37,10 +37,11 @@ const Home: NextPage = () => {
               playsInline
               aria-hidden
               id="bg-video"
+              poster="/videos/bg-video-thumbnail.webp"
               className="pointer-events-none object-cover w-full h-full -z-50"
               suppressHydrationWarning
             >
-              <source src="/videos/sample.mp4" type="video/mp4" />
+              <source src="/videos/bg-video.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
