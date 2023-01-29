@@ -35,7 +35,7 @@ export default function Document() {
           content="Hackathon, Hackathon matching, Hackathon events, Find hackathon, Community, Find peers, Find team"
         />
       </Head>
-      <body className="bg-[#FAF9F9] dark:bg-slate-900 transition-colors duration-200 text-black dark:text-white">
+      <body className="bg-[#FAF9F9] dark:bg-slate-900 transition-colors duration-200 text-black dark:text-white overflow-x-hidden">
         <Main />
         <NextScript />
       </body>

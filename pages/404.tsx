@@ -2,10 +2,11 @@ import { Button } from "flowbite-react";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
+import PageTransition from "../components/layout/pageTransition";
 
 const PageNotFound: NextPage = () => {
   return (
-    <>
+    <PageTransition>
       <NextSeo title="404" />
       <div className="flex p-10 h-[80vh] items-center justify-center gap-x-28">
         <div className="hidden sm:block relative">
@@ -24,7 +25,7 @@ const PageNotFound: NextPage = () => {
           </Button>
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 };
 

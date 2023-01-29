@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import TerminalText from "../components/home/terminal-text";
+import PageTransition from "../components/layout/pageTransition";
 import HackathonCard from "../components/ui/cards/hackathon";
 import LoadingCard from "../components/ui/cards/hackathon-loading";
 
@@ -26,7 +27,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <>
+    <PageTransition>
       <section id="hero" className="relative h-screen w-full overflow-hidden">
         <div className="h-full">
           <div className="h-full bg-black">
@@ -87,7 +88,7 @@ const Home: NextPage = () => {
 
         {/* <img src="/blh.svg" /> */}
       </section>
-    </>
+    </PageTransition>
   );
 };
 
