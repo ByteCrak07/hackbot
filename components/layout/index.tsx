@@ -1,38 +1,33 @@
-import { FC, ReactNode, useEffect } from "react";
-import {
-  Inconsolata,
-  Jost,
-  Press_Start_2P,
-  Quicksand,
-} from "@next/font/google";
-import Header from "./header";
-import Footer from "./footer";
-import { useRouter } from "next/router";
+import { FC, ReactNode, useEffect } from 'react'
+import { Inconsolata, Jost, Press_Start_2P, Quicksand } from '@next/font/google'
+import Header from './header'
+import Footer from './footer'
+import { useRouter } from 'next/router'
 
 const jost = Jost({
-  subsets: ["latin"],
-});
+  subsets: ['latin'],
+})
 
 const quicksand = Quicksand({
-  subsets: ["latin"],
-});
+  subsets: ['latin'],
+})
 
 const inconsolata = Inconsolata({
-  subsets: ["latin"],
-});
+  subsets: ['latin'],
+})
 
-const press_start_2p = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const press_start_2p = Press_Start_2P({ weight: '400', subsets: ['latin'] })
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
-    if (localStorage.getItem("theme") === "dark") {
-      document.documentElement.classList.add("dark");
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark')
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove('dark')
     }
-  }, []);
+  }, [])
 
   return (
     <>
@@ -55,14 +50,14 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 
       <Header />
       <main
-        className={`flex flex-col flex-grow font-jost ${
-          router.pathname === "/" ? "" : "mt-16"
+        className={`flex flex-grow flex-col font-jost ${
+          router.pathname === '/' ? '' : 'mt-16'
         }`}
       >
         {children}
       </main>
       <Footer />
     </>
-  );
-};
-export default Layout;
+  )
+}
+export default Layout

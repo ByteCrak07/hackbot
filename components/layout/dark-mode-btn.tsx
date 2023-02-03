@@ -1,28 +1,28 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from 'react'
 
-const DarkModeBtn: FC<{ type: "button" | "toggle" }> = ({ type }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   const toggleTheme = () => {
     if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "bright");
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'bright')
     } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
     }
 
-    setIsDarkMode(!isDarkMode);
-  };
+    setIsDarkMode(!isDarkMode)
+  }
 
   useEffect(() => {
-    if (localStorage.getItem("theme") == "dark") setIsDarkMode(true);
-  }, []);
+    if (localStorage.getItem('theme') == 'dark') setIsDarkMode(true)
+  }, [])
 
-  if (type === "button")
+  if (type === 'button')
     return (
       <button
-        className="toggle-theme mr-3 p-3 border border-opacity-40 dark:border-opacity-40 border-gray-600 dark:border-white rounded-lg hover:shadow"
+        className="toggle-theme mr-3 rounded-lg border border-gray-600 border-opacity-40 p-3 hover:shadow dark:border-white dark:border-opacity-40"
         onClick={toggleTheme}
       >
         <style jsx>
@@ -77,7 +77,7 @@ const DarkModeBtn: FC<{ type: "button" | "toggle" }> = ({ type }) => {
           </svg>
         ) : null}
       </button>
-    );
+    )
   else
     return (
       <>
@@ -100,7 +100,7 @@ const DarkModeBtn: FC<{ type: "button" | "toggle" }> = ({ type }) => {
         <div className="flex items-center justify-center">
           <label
             htmlFor="toggle-theme"
-            className="flex items-center cursor-pointer"
+            className="flex cursor-pointer items-center"
           >
             <div className="relative">
               <input
@@ -110,13 +110,13 @@ const DarkModeBtn: FC<{ type: "button" | "toggle" }> = ({ type }) => {
                 type="checkbox"
                 className="sr-only"
               />
-              <div className="w-10 h-4 bg-gray-200 rounded-full shadow-inner"></div>
+              <div className="h-4 w-10 rounded-full bg-gray-200 shadow-inner"></div>
               <div
-                className={`dot absolute w-6 h-6 rounded-full shadow -left-1 -top-1 transition ${
-                  isDarkMode ? "bg-amber-300" : "bg-white"
+                className={`dot absolute -left-1 -top-1 h-6 w-6 rounded-full shadow transition ${
+                  isDarkMode ? 'bg-amber-300' : 'bg-white'
                 }`}
               >
-                <div className="flex items-center justify-center h-full">
+                <div className="flex h-full items-center justify-center">
                   {/* moon */}
                   {!isDarkMode ? (
                     <svg
@@ -154,7 +154,7 @@ const DarkModeBtn: FC<{ type: "button" | "toggle" }> = ({ type }) => {
           </label>
         </div>
       </>
-    );
-};
+    )
+}
 
-export default DarkModeBtn;
+export default DarkModeBtn

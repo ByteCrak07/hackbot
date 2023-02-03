@@ -1,67 +1,67 @@
-import { FC, useEffect, useState } from "react";
-import Logo from "./logo";
-import Link from "next/link";
-import { Navbar, Dropdown, Avatar, Button } from "flowbite-react";
-import DarkModeBtn from "./dark-mode-btn";
-import { useRouter } from "next/router";
-import throttle from "lodash/throttle";
-import NavbarLink from "../ui/flowbite-custom/navbar-link";
-import NavbarBrand from "../ui/flowbite-custom/navbar-brand";
+import { FC, useEffect, useState } from 'react'
+import Logo from './logo'
+import Link from 'next/link'
+import { Navbar, Dropdown, Avatar, Button } from 'flowbite-react'
+import DarkModeBtn from './dark-mode-btn'
+import { useRouter } from 'next/router'
+import throttle from 'lodash/throttle'
+import NavbarLink from '../ui/flowbite-custom/navbar-link'
+import NavbarBrand from '../ui/flowbite-custom/navbar-brand'
 
 const Header: FC<{}> = () => {
   const [user, setUser] = useState<null | { name: string; username: string }>(
     null
-  );
+  )
 
-  const router = useRouter();
+  const router = useRouter()
   const [transparentHeader, setTransparentHeader] = useState(
-    router.pathname === "/" ? true : false
-  );
+    router.pathname === '/' ? true : false
+  )
 
   useEffect(() => {
-    if (router.pathname === "/") {
+    if (router.pathname === '/') {
       const checkScroll = throttle(() => {
         if (window.scrollY > 50) {
-          if (transparentHeader) setTransparentHeader(false);
+          if (transparentHeader) setTransparentHeader(false)
         } else {
-          if (!transparentHeader) setTransparentHeader(true);
+          if (!transparentHeader) setTransparentHeader(true)
         }
-      }, 200);
+      }, 200)
 
-      checkScroll();
-      window.addEventListener("scroll", checkScroll);
+      checkScroll()
+      window.addEventListener('scroll', checkScroll)
 
       return () => {
-        window.removeEventListener("scroll", checkScroll);
-      };
+        window.removeEventListener('scroll', checkScroll)
+      }
     } else {
-      setTransparentHeader(false);
+      setTransparentHeader(false)
     }
-  }, [router, transparentHeader]);
+  }, [router, transparentHeader])
 
   const profileDropdowns = [
-    { title: "Profile", link: "/profile" },
-    { title: "Your Hackathons", link: "/hackathons/participating" },
-    { title: "Account settings", link: "/settings" },
-  ];
+    { title: 'Profile', link: '/profile' },
+    { title: 'Your Hackathons', link: '/hackathons/participating' },
+    { title: 'Account settings', link: '/settings' },
+  ]
 
   const menus = [
-    { title: "Home", link: "/" },
-    { title: "Hackathons", link: "/hackathons" },
-    { title: "Events", link: "/events" },
-    { title: "About", link: "/about" },
-  ];
+    { title: 'Home', link: '/' },
+    { title: 'Hackathons', link: '/hackathons' },
+    { title: 'Events', link: '/events' },
+    { title: 'About', link: '/about' },
+  ]
 
   return (
     <header
       className={`fixed z-10 w-full rounded-b-lg font-jost ${
-        transparentHeader ? "dark" : "shadow-xl"
+        transparentHeader ? 'dark' : 'shadow-xl'
       }`}
     >
       <Navbar
         fluid={true}
         className={`rounded-b-lg ${
-          transparentHeader ? "bg-opacity-0 dark:bg-opacity-0" : ""
+          transparentHeader ? 'bg-opacity-0 dark:bg-opacity-0' : ''
         }`}
       >
         <NavbarBrand href="/">
@@ -69,7 +69,7 @@ const Header: FC<{}> = () => {
             <Logo track />
           </div>
         </NavbarBrand>
-        <div className="flex justify-end md:order-2 z-50 md:w-36">
+        <div className="z-50 flex justify-end md:order-2 md:w-36">
           <div className="hidden md:block">
             {transparentHeader ? null : <DarkModeBtn type="button" />}
           </div>
@@ -77,7 +77,7 @@ const Header: FC<{}> = () => {
             <>
               <Button
                 onClick={() =>
-                  setUser({ name: "Shashi Soman", username: "@shashi" })
+                  setUser({ name: 'Shashi Soman', username: '@shashi' })
                 }
               >
                 Sign In
@@ -127,14 +127,14 @@ const Header: FC<{}> = () => {
               {menu.title}
             </NavbarLink>
           ))}
-          <div className="md:hidden flex gap-x-4 py-3 px-3 text-black dark:text-white text-opacity-80 dark:text-opacity-60">
+          <div className="flex gap-x-4 py-3 px-3 text-black text-opacity-80 dark:text-white dark:text-opacity-60 md:hidden">
             <div>Theme</div>
             <DarkModeBtn type="toggle" />
           </div>
         </Navbar.Collapse>
       </Navbar>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react'
 
 const ConstructionSVG: FC = () => (
   <div>
@@ -592,6 +592,6 @@ const ConstructionSVG: FC = () => (
       </g>
     </svg>
   </div>
-);
+)
 
-export default ConstructionSVG;
+export default ConstructionSVG

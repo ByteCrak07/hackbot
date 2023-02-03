@@ -1,51 +1,51 @@
-import { FC, ReactNode, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
+import { FC, ReactNode, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 
 const PageTransition: FC<{ children: ReactNode }> = ({ children }) => {
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
-    sessionStorage.setItem("prevRoute", router.asPath);
-  }, [router]);
+    sessionStorage.setItem('prevRoute', router.asPath)
+  }, [router])
 
   const variants = {
     hiddenNext: { opacity: 0, x: 400, y: 0 },
     hiddenPrev: { opacity: 0, x: -400, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0, y: -100 },
-  };
+  }
 
   function findInitialAnimation() {
-    if (typeof window === "undefined") return "hiddenNext";
+    if (typeof window === 'undefined') return 'hiddenNext'
 
-    const prevRoute = sessionStorage.getItem("prevRoute");
+    const prevRoute = sessionStorage.getItem('prevRoute')
 
-    if (!prevRoute) return "hiddenNext";
+    if (!prevRoute) return 'hiddenNext'
 
-    if (prevRoute === "/") return "hiddenNext";
-    if (router.asPath === "/") return "hiddenPrev";
+    if (prevRoute === '/') return 'hiddenNext'
+    if (router.asPath === '/') return 'hiddenPrev'
 
-    if (prevRoute === "/hackathons") return "hiddenNext";
+    if (prevRoute === '/hackathons') return 'hiddenNext'
 
-    if (prevRoute === "/events") {
-      if (router.asPath === "/hackathons") return "hiddenPrev";
-      return "hiddenNext";
+    if (prevRoute === '/events') {
+      if (router.asPath === '/hackathons') return 'hiddenPrev'
+      return 'hiddenNext'
     }
 
-    if (prevRoute === "/about") return "hiddenPrev";
+    if (prevRoute === '/about') return 'hiddenPrev'
 
     if (
-      prevRoute?.split("/").length >
-      router.asPath.slice(0, -1).split("/").length
+      prevRoute?.split('/').length >
+      router.asPath.slice(0, -1).split('/').length
     ) {
-      return "hiddenPrev";
+      return 'hiddenPrev'
     } else {
-      return "hiddenNext";
+      return 'hiddenNext'
     }
   }
 
-  const initial = findInitialAnimation();
+  const initial = findInitialAnimation()
 
   return (
     <motion.div
@@ -53,10 +53,10 @@ const PageTransition: FC<{ children: ReactNode }> = ({ children }) => {
       initial={initial}
       animate="enter"
       exit="exit"
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 20 }}
     >
       {children}
     </motion.div>
-  );
-};
-export default PageTransition;
+  )
+}
+export default PageTransition

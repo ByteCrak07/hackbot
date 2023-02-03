@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
@@ -35,10 +35,10 @@ export default function Document() {
           content="Hackathon, Hackathon matching, Hackathon events, Find hackathon, Community, Find peers, Find team"
         />
       </Head>
-      <body className="bg-[#FAF9F9] dark:bg-slate-900 transition-colors duration-200 text-black dark:text-white overflow-x-hidden">
+      <body className="overflow-x-hidden bg-[#FAF9F9] text-black transition-colors duration-200 dark:bg-slate-900 dark:text-white">
         <Main />
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }

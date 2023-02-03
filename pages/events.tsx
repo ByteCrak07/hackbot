@@ -1,7 +1,7 @@
-import { NextPage } from "next";
-import { NextSeo } from "next-seo";
-import Construction from "../components/construction";
-import PageTransition from "../components/layout/pageTransition";
+import { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
+import Construction from '../components/construction'
+import PageTransition from '../components/layout/pageTransition'
 
 const Events: NextPage = () => {
   return (
@@ -11,7 +11,7 @@ const Events: NextPage = () => {
         <Construction />
       </section>
     </PageTransition>
-  );
-};
+  )
+}
 
-export default Events;
+export default Events

@@ -1,32 +1,32 @@
-import { FC } from "react";
-import Typewriter from "typewriter-effect";
+import { FC } from 'react'
+import Typewriter from 'typewriter-effect'
 
 const TerminalText: FC = () => {
   const headings = [
-    "Explore hackathons",
-    "Find your perfect team",
-    "Learn, Build and Explore",
-  ];
+    'Explore hackathons',
+    'Find your perfect team',
+    'Learn, Build and Explore',
+  ]
 
   return (
-    <div className="font-terminal w-full flex flex-col justify-center items-center px-5">
-      <div className="text-6xl md:text-7xl font-medium">
+    <div className="flex w-full flex-col items-center justify-center px-5 font-terminal">
+      <div className="text-6xl font-medium md:text-7xl">
         <span className="mr-5">&gt;</span>
         <h1 className="inline">Hi Hacker</h1>
       </div>
-      <div className="flex justify-center h-[100px] text-4xl md:text-5xl">
+      <div className="flex h-[100px] justify-center text-4xl md:text-5xl">
         <Typewriter
           options={{
             strings: headings,
             autoStart: true,
             loop: true,
-            cursor: "_",
+            cursor: '_',
             deleteSpeed: 30,
           }}
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TerminalText;
+export default TerminalText

@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { Footer } from "flowbite-react";
-import { BsDiscord, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
-import Logo from "./logo";
-import Link from "next/link";
-import FooterLink from "../ui/flowbite-custom/footer-link";
-import FooterIcon from "../ui/flowbite-custom/footer-icon";
+import { FC } from 'react'
+import { Footer } from 'flowbite-react'
+import { BsDiscord, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs'
+import Logo from './logo'
+import Link from 'next/link'
+import FooterLink from '../ui/flowbite-custom/footer-link'
+import FooterIcon from '../ui/flowbite-custom/footer-icon'
 
 const AppFooter: FC = () => (
   <Footer container={true}>
@@ -15,7 +15,7 @@ const AppFooter: FC = () => (
             <Logo />
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6 pt-10 md:pt-0">
+        <div className="grid grid-cols-2 gap-8 pt-10 sm:mt-4 sm:grid-cols-3 sm:gap-6 md:pt-0">
           <div>
             <Footer.Title title="Follow us" />
             <Footer.LinkGroup col={true}>
@@ -71,6 +71,6 @@ const AppFooter: FC = () => (
       </div>
     </div>
   </Footer>
-);
+)
 
-export default AppFooter;
+export default AppFooter

@@ -1,12 +1,12 @@
-import Link from "next/link";
-import { FC, ReactNode } from "react";
-import { IconType } from "react-icons";
+import Link from 'next/link'
+import { FC, ReactNode } from 'react'
+import { IconType } from 'react-icons'
 
 const FooterIcon: FC<{
-  icon: IconType;
-  href: string;
-  alt?: string;
-  target?: "_blank";
+  icon: IconType
+  href: string
+  alt?: string
+  target?: '_blank'
 }> = ({ icon: Icon, href, alt, target }) => {
   if (!target)
     return (
@@ -17,7 +17,7 @@ const FooterIcon: FC<{
         <Icon className="h-5 w-5" />
         <span className="sr-only">{alt}</span>
       </Link>
-    );
+    )
   else
     return (
       <a
@@ -29,7 +29,7 @@ const FooterIcon: FC<{
         <Icon className="h-5 w-5" />
         <span className="sr-only">{alt}</span>
       </a>
-    );
-};
+    )
+}
 
-export default FooterIcon;
+export default FooterIcon

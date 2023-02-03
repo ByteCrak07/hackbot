@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { FC, ReactNode } from "react";
+import Link from 'next/link'
+import { FC, ReactNode } from 'react'
 
 const FooterLink: FC<{
-  children: ReactNode;
-  href: string;
-  target?: "_blank";
+  children: ReactNode
+  href: string
+  target?: '_blank'
 }> = ({ children, href, target }) => {
   if (!target)
     return (
@@ -13,7 +13,7 @@ const FooterLink: FC<{
           {children}
         </Link>
       </li>
-    );
+    )
   else
     return (
       <li className="last:mr-0 md:mr-6">
@@ -26,7 +26,7 @@ const FooterLink: FC<{
           {children}
         </a>
       </li>
-    );
-};
+    )
+}
 
-export default FooterLink;
+export default FooterLink

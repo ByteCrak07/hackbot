@@ -1,7 +1,7 @@
-import { NextPage } from "next";
-import { NextSeo } from "next-seo";
-import Construction from "../components/construction";
-import PageTransition from "../components/layout/pageTransition";
+import { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
+import Construction from '../components/construction'
+import PageTransition from '../components/layout/pageTransition'
 
 const FAQs: NextPage = () => {
   return (
@@ -11,7 +11,7 @@ const FAQs: NextPage = () => {
         <Construction />
       </section>
     </PageTransition>
-  );
-};
+  )
+}
 
-export default FAQs;
+export default FAQs

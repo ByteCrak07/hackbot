@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Card } from "flowbite-react";
+import { FC } from 'react'
+import { Card } from 'flowbite-react'
 
 const HackathonCard: FC = () => (
   <div className="max-w-sm">
@@ -16,6 +16,6 @@ const HackathonCard: FC = () => (
       </p>
     </Card>
   </div>
-);
+)
 
-export default HackathonCard;
+export default HackathonCard
