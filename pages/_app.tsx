@@ -10,7 +10,7 @@ import { hotjar } from 'react-hotjar'
 import SEOconfig from '../seo/seo.config'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const isProduction = process.env.VERCEL_ENV === 'production'
+  const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
   const router = useRouter()
 
   useEffect(() => {

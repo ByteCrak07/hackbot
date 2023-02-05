@@ -4,5 +4,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_HOTJAR_HJID: number
     NEXT_PUBLIC_HOTJAR_HJSV: number
     VERCEL_ENV: 'production' | 'preview' | 'development'
+    NEXT_PUBLIC_VERCEL_ENV: 'production' | 'preview' | 'development'
   }
 }
