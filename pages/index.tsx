@@ -1,15 +1,19 @@
-import { Button } from 'flowbite-react'
 import { NextPage } from 'next'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { BsChevronDoubleDown } from 'react-icons/bs'
 import SEO from '../seo'
-import TerminalText from '../components/home/terminal-text'
 import PageTransition from '../components/layout/pageTransition'
 import HackathonCard from '../components/ui/cards/hackathon'
 import LoadingCard from '../components/ui/cards/hackathon-loading'
+import ExploreBtn from '../components/home/explore-btn'
 
 const Home: NextPage = () => {
+  // dynamic imports
+  const TerminalText = dynamic(() => import('../components/home/terminal-text'))
+  const VideoInfo = dynamic(() => import('../components/home/video-info'))
+
   useEffect(() => {
     let video = document.getElementById('bg-video') as HTMLVideoElement
 
@@ -53,23 +57,26 @@ const Home: NextPage = () => {
           <TerminalText />
           <div className="dark mt-24 -mb-24">
             <Link href={'/hackathons'}>
-              <Button outline gradientDuoTone="cyanToBlue">
-                Explore hackathons
-              </Button>
+              <ExploreBtn />
             </Link>
           </div>
 
           <button
             onClick={scrollDown}
             className="absolute bottom-5 left-1/2 -translate-x-1/2 text-2xl"
+            aria-label="more"
           >
             <BsChevronDoubleDown className="animate-bounce" />
           </button>
+
+          <div className="absolute bottom-10 right-10">
+            <VideoInfo />
+          </div>
         </div>
       </section>
 
       <section className="px-10 pt-20 md:px-20">
-        <h2 className="pb-5 text-2xl font-medium">Featured Hackathons</h2>
+        <h3 className="pb-5 text-2xl font-medium">Featured Hackathons</h3>
         <div className="flex justify-center">
           <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <LoadingCard />
@@ -80,7 +87,7 @@ const Home: NextPage = () => {
       </section>
 
       <section className="py-20 px-10 md:px-20">
-        <h2 className="pb-5 text-2xl font-medium">Latest Hackathons</h2>
+        <h3 className="pb-5 text-2xl font-medium">Latest Hackathons</h3>
         <div className="flex justify-center">
           <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <LoadingCard />
@@ -88,8 +95,6 @@ const Home: NextPage = () => {
             <HackathonCard />
           </div>
         </div>
-
-        {/* <img src="/blh.svg" /> */}
       </section>
     </PageTransition>
   )

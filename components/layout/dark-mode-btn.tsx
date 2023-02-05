@@ -16,7 +16,14 @@ const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('theme') == 'dark') setIsDarkMode(true)
+    if (localStorage.getItem('theme') === 'dark') setIsDarkMode(true)
+    else if (localStorage.getItem('theme') === 'bright') setIsDarkMode(false)
+    else if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      setIsDarkMode(true)
+    }
   }, [])
 
   if (type === 'button')

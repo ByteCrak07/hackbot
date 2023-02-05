@@ -11,7 +11,7 @@ const AppFooter: FC = () => (
     <div className="w-full font-jost">
       <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div className="w-48">
-          <Link href="/">
+          <Link href="/" aria-label="HackBot">
             <Logo />
           </Link>
         </div>

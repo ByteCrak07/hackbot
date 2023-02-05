@@ -1,9 +1,12 @@
 import { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import SEO from '../seo'
-import Construction from '../components/construction'
 import PageTransition from '../components/layout/pageTransition'
 
 const Events: NextPage = () => {
+  // dynamic imports
+  const Construction = dynamic(() => import('../components/construction'))
+
   return (
     <PageTransition>
       <SEO title="Events" />

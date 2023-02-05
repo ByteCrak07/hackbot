@@ -1,10 +1,14 @@
 import { Button } from 'flowbite-react'
 import { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import SEO from '../seo'
 import PageNotFoundImg from '../components/404/image'
 import PageTransition from '../components/layout/pageTransition'
 
 const PageNotFound: NextPage = () => {
+  // dynamic imports
+  const PageNotFoundImg = dynamic(() => import('../components/404/image'))
+
   return (
     <PageTransition>
       <SEO title="404 | Page Not Found" />

@@ -64,9 +64,9 @@ const Header: FC<{}> = () => {
           transparentHeader ? 'bg-opacity-0 dark:bg-opacity-0' : ''
         }`}
       >
-        <NavbarBrand href="/">
+        <NavbarBrand href="/" aria-label="HackBot">
           <div className="w-48">
-            <Logo track />
+            <Logo trackEyes />
           </div>
         </NavbarBrand>
         <div className="z-50 flex justify-end md:order-2 md:w-36">
