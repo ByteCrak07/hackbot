@@ -3,6 +3,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { BsChevronDoubleDown } from 'react-icons/bs'
+import SEO from '../seo'
 import TerminalText from '../components/home/terminal-text'
 import PageTransition from '../components/layout/pageTransition'
 import HackathonCard from '../components/ui/cards/hackathon'
@@ -28,6 +29,8 @@ const Home: NextPage = () => {
 
   return (
     <PageTransition>
+      <SEO />
+
       <section id="hero" className="relative h-screen w-full overflow-hidden">
         <div className="h-full">
           <div className="h-full bg-black">

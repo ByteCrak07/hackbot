@@ -1,12 +1,13 @@
 import { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
+import SEO from '../seo'
 import Construction from '../components/construction'
 import PageTransition from '../components/layout/pageTransition'
 
 const Events: NextPage = () => {
   return (
     <PageTransition>
-      <NextSeo title="Events" />
+      <SEO title="Events" />
+
       <section>
         <Construction />
       </section>

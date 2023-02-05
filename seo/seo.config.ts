@@ -8,14 +8,23 @@ const SEOconfig: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://hackbot.ml',
+    url: 'https://hackbot.xyz',
     siteName: 'HackBot',
+    images: [
+      {
+        url: '/icons/android-chrome-512x512.png',
+        width: 512,
+        height: 512,
+        alt: 'Og Image Alt',
+        type: 'image/png',
+      },
+    ],
   },
-  // twitter: {
-  //   handle: "@AbilSavio",
-  //   site: "@AbilSavio",
-  //   cardType: "summary_large_image",
-  // },
+  twitter: {
+    handle: '@AbilSavio',
+    site: '@AbilSavio',
+    cardType: 'summary_large_image',
+  },
 }
 
 export default SEOconfig
