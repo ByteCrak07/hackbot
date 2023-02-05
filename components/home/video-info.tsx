@@ -23,8 +23,6 @@ const VideoInfo: FC = () => {
         triggerEl,
         options
       )
-
-      popover.show()
     }
   }, [])
 
@@ -59,22 +57,22 @@ const VideoInfo: FC = () => {
         data-popover
         id="pop-content"
         role="tooltip"
-        className="invisible absolute z-10 inline-block w-64 rounded-lg border border-gray-200 bg-white text-sm font-light text-gray-500 opacity-0 shadow-sm transition-opacity duration-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400"
+        className="invisible absolute z-10 inline-block w-72 rounded-lg border border-gray-200 bg-white text-sm text-gray-500 opacity-0 shadow-sm transition-opacity duration-300"
       >
         <div className="px-3 py-2">
           <p>
             Credits to{' '}
             <a
-              className="hover:cursor-pointer hover:underline"
+              className="underline hover:cursor-pointer"
               href="https://ethindia.co"
               target="_blank"
               rel="noreferrer"
             >
               EthIndia
             </a>
-            , from this{' '}
+            , video source:{' '}
             <a
-              className="hover:cursor-pointer hover:underline"
+              className="underline hover:cursor-pointer"
               href="https://twitter.com/ETHIndiaco/status/1599779802512179200"
               target="_blank"
               rel="noreferrer"

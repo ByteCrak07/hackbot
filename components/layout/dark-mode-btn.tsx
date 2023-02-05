@@ -3,18 +3,6 @@ import React, { FC, useState, useEffect } from 'react'
 const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
   const [isDarkMode, setIsDarkMode] = useState(false)
 
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'bright')
-    } else {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    }
-
-    setIsDarkMode(!isDarkMode)
-  }
-
   useEffect(() => {
     if (localStorage.getItem('theme') === 'dark') setIsDarkMode(true)
     else if (localStorage.getItem('theme') === 'bright') setIsDarkMode(false)
@@ -26,11 +14,24 @@ const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!isDarkMode) document.documentElement.classList.remove('dark')
+    else document.documentElement.classList.add('dark')
+  }, [isDarkMode])
+
+  const toggleTheme = () => {
+    if (isDarkMode) localStorage.setItem('theme', 'bright')
+    else localStorage.setItem('theme', 'dark')
+
+    setIsDarkMode(!isDarkMode)
+  }
+
   if (type === 'button')
     return (
       <button
         className="toggle-theme mr-3 rounded-lg border border-gray-600 border-opacity-40 p-3 hover:shadow dark:border-white dark:border-opacity-40"
         onClick={toggleTheme}
+        aria-label="Dark mode toggle"
       >
         <style jsx>
           {`
@@ -108,6 +109,7 @@ const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
           <label
             htmlFor="toggle-theme"
             className="flex cursor-pointer items-center"
+            aria-label="Dark mode toggle"
           >
             <div className="relative">
               <input
@@ -116,6 +118,7 @@ const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
                 id="toggle-theme"
                 type="checkbox"
                 className="sr-only"
+                aria-label="Dark mode toggle"
               />
               <div className="h-4 w-10 rounded-full bg-gray-200 shadow-inner"></div>
               <div

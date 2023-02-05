@@ -71,7 +71,9 @@ const Header: FC<{}> = () => {
         </NavbarBrand>
         <div className="z-50 flex justify-end md:order-2 md:w-36">
           <div className="hidden md:block">
-            {transparentHeader ? null : <DarkModeBtn type="button" />}
+            <div className={transparentHeader ? 'hidden' : ''}>
+              <DarkModeBtn type="button" />
+            </div>
           </div>
           {!user ? (
             <>
