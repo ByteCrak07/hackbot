@@ -11,7 +11,7 @@ const Profile: NextPage = () => {
     <PageTransition>
       <SEO title="Profile" />
 
-      <section>
+      <section className="min-h-[80vh]">
         <Construction />
       </section>
     </PageTransition>

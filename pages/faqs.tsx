@@ -11,7 +11,7 @@ const FAQs: NextPage = () => {
     <PageTransition>
       <SEO title="FAQs" />
 
-      <section>
+      <section className="min-h-[80vh]">
         <Construction />
       </section>
     </PageTransition>

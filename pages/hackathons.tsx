@@ -11,7 +11,7 @@ const Hackathons: NextPage = () => {
     <PageTransition>
       <SEO title="Hackathons" />
 
-      <section>
+      <section className="min-h-[80vh]">
         <Construction />
       </section>
     </PageTransition>
