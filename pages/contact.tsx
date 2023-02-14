@@ -11,7 +11,7 @@ const Contact: NextPage = () => {
     <PageTransition>
       <SEO title="Contact" />
 
-      <section>
+      <section className="min-h-[80vh]">
         <Construction />
       </section>
     </PageTransition>

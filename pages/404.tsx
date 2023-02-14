@@ -13,8 +13,8 @@ const PageNotFound: NextPage = () => {
     <PageTransition>
       <SEO title="404 | Page Not Found" />
 
-      <div className="flex h-[80vh] items-center justify-center gap-x-28 p-10">
-        <div className="relative hidden sm:block">
+      <div className="flex min-h-[80vh] flex-col-reverse items-center justify-center gap-x-28 p-10 md:flex-row">
+        <div className="relative scale-75 md:scale-100">
           <div className="absolute -top-20 left-10">
             <div className="w-20 border-[20px] border-t-0 border-b-[40px] border-transparent border-b-gray-600"></div>
             <div className="absolute left-1/2 top-7 -z-10 h-6 w-6 -translate-x-1/2 rounded-full border border-gray-600 dark:border-0 dark:bg-yellow-200"></div>
@@ -22,10 +22,10 @@ const PageNotFound: NextPage = () => {
           </div>
           <PageNotFoundImg />
         </div>
-        <div>
+        <div className="flex flex-col items-center py-28 md:items-start">
           <h2 className="font-retro text-6xl">404</h2>
           <p className="mb-3 font-jost text-3xl">PAGE NOT FOUND</p>
-          <Button outline={true} gradientDuoTone="cyanToBlue">
+          <Button outline={true} gradientDuoTone="greenToBlue">
             Back to Home
           </Button>
         </div>
