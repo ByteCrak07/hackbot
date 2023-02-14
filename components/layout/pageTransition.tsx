@@ -17,7 +17,14 @@ const PageTransition: FC<{ children: ReactNode }> = ({ children }) => {
   }
 
   function findInitialAnimation() {
-    if (typeof window === 'undefined') return 'hiddenNext'
+    if (typeof window === 'undefined') return 'hiddenPrev'
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    )
+      return 'hiddenPrev'
 
     const prevRoute = sessionStorage.getItem('prevRoute')
 
@@ -33,7 +40,12 @@ const PageTransition: FC<{ children: ReactNode }> = ({ children }) => {
       return 'hiddenNext'
     }
 
-    if (prevRoute === '/about') return 'hiddenPrev'
+    if (prevRoute === '/about') {
+      if (['/hackathons', '/events', ''].includes(router.asPath))
+        return 'hiddenPrev'
+
+      return 'hiddenNext'
+    }
 
     if (
       prevRoute?.split('/').length >

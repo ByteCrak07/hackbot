@@ -129,10 +129,10 @@ const Header: FC<{}> = () => {
               {menu.title}
             </NavbarLink>
           ))}
-          <div className="flex gap-x-4 py-3 px-3 text-black text-opacity-80 dark:text-white dark:text-opacity-60 md:hidden">
-            <div>Theme</div>
+          <span className="flex gap-x-4 py-3 px-3 text-black text-opacity-80 dark:text-white dark:text-opacity-60 md:hidden">
+            <span>Theme</span>
             <DarkModeBtn type="toggle" />
-          </div>
+          </span>
         </Navbar.Collapse>
       </Navbar>
     </header>
