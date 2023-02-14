@@ -50,11 +50,11 @@ const ExploreBtn: FC = () => {
           }
         }
       `}</style>
-      <button className="exp-btn relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg p-0.5 text-sm font-medium text-gray-900 focus:outline-none">
+      <span className="exp-btn relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg p-0.5 text-sm font-medium text-gray-900 focus:outline-none">
         <span className="relative rounded-md bg-gray-900 px-5 py-2.5 text-white transition-all duration-75 ease-in hover:bg-opacity-0">
           Explore Hackathons
         </span>
-      </button>
+      </span>
     </>
   )
 }

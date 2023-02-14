@@ -100,7 +100,7 @@ const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
           }
 
           .sun {
-            color: rgba(255, 255, 255, 1);
+            color: rgba(252, 211, 77, 1);
             scale: 0.8;
           }
         `}</style>
@@ -122,8 +122,10 @@ const DarkModeBtn: FC<{ type: 'button' | 'toggle' }> = ({ type }) => {
               />
               <div className="h-4 w-10 rounded-full bg-gray-200 shadow-inner"></div>
               <div
-                className={`dot absolute -left-1 -top-1 h-6 w-6 rounded-full shadow transition ${
-                  isDarkMode ? 'bg-amber-300' : 'bg-white'
+                className={`dot absolute -left-1 -top-1 h-6 w-6 rounded-full border-2 shadow transition ${
+                  isDarkMode
+                    ? 'border-gray-600 bg-gray-900'
+                    : 'border-gray-300 bg-white'
                 }`}
               >
                 <div className="flex h-full items-center justify-center">
