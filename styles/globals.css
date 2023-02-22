@@ -8,7 +8,7 @@
   background-blend-mode: color-burn;
 } */
 
-body {
+/* body {
   position: relative;
 }
 body::before {
@@ -25,7 +25,7 @@ body::before {
 }
 .dark body::before {
   filter: contrast(0.4) opacity(0.3);
-}
+} */
 
 /* scroll bar styles */
 ::-webkit-scrollbar {
