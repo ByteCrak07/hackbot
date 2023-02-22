@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from 'react'
 import Logo from './logo'
 import Link from 'next/link'
-import { Navbar, Dropdown, Avatar, Button } from 'flowbite-react'
-import DarkModeBtn from './dark-mode-btn'
 import { useRouter } from 'next/router'
 import throttle from 'lodash/throttle'
+import { Navbar, Dropdown, Avatar, Button } from 'flowbite-react'
+import { RiMenu3Fill } from 'react-icons/ri'
+import DarkModeBtn from './dark-mode-btn'
 import NavbarLink from '../ui/flowbite-custom/navbar-link'
 import NavbarBrand from '../ui/flowbite-custom/navbar-brand'
 
@@ -39,6 +40,31 @@ const Header: FC<{}> = () => {
     }
   }, [router, transparentHeader])
 
+  // Temporary fix for closing navbar during route change and on clicking outside
+  useEffect(() => {
+    window.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement
+      const header = document.getElementsByTagName('header')[0]
+      const menuBtn = document.getElementById('menu-btn')
+      const isClosed = document
+        .getElementById('navbar-collapse')
+        ?.classList.contains('hidden')
+
+      if (target && header && !isClosed && menuBtn?.id !== target.id) {
+        if (header.contains(target)) return
+
+        // if clicked outside
+        menuBtn?.click()
+      }
+    })
+
+    // works everytime when route gets changed to close the collapsed navbar
+    const isClosed = document
+      .getElementById('navbar-collapse')
+      ?.classList.contains('hidden')
+    if (!isClosed) document.getElementById('menu-btn')?.click()
+  }, [router])
+
   const profileDropdowns = [
     { title: 'Profile', link: '/profile' },
     { title: 'Your Hackathons', link: '/hackathons/participating' },
@@ -65,18 +91,21 @@ const Header: FC<{}> = () => {
         }`}
       >
         <NavbarBrand href="/" aria-label="HackBot">
-          <div className="w-48">
+          <div className="-ml-2 w-48 scale-90 md:ml-0 md:scale-100">
             <Logo trackEyes />
           </div>
         </NavbarBrand>
+
         <div className="z-50 flex justify-end md:order-2 md:w-36">
+          {/* for dark mode btn */}
           <div className="hidden md:block">
             <div className={transparentHeader ? 'hidden' : ''}>
               <DarkModeBtn type="button" />
             </div>
           </div>
+
           {!user ? (
-            <>
+            <div className="scale-90 md:scale-100">
               <Button
                 onClick={() =>
                   setUser({ name: 'Shashi Soman', username: '@shashi' })
@@ -87,7 +116,7 @@ const Header: FC<{}> = () => {
               {/* <Link href="/signin">
                 <Button>Sign In</Button>
               </Link> */}
-            </>
+            </div>
           ) : (
             <Dropdown
               arrowIcon={false}
@@ -117,9 +146,16 @@ const Header: FC<{}> = () => {
               </Dropdown.Item>
             </Dropdown>
           )}
-          <Navbar.Toggle />
+          <Navbar.Toggle
+            barIcon={RiMenu3Fill}
+            className="scale-90"
+            id="menu-btn"
+          />
         </div>
-        <Navbar.Collapse className="bg-white dark:bg-gray-800 md:bg-transparent dark:md:bg-transparent">
+        <Navbar.Collapse
+          id="navbar-collapse"
+          className="rounded-lg bg-white dark:bg-gray-800 md:bg-transparent dark:md:bg-transparent"
+        >
           {menus.map((menu, i) => (
             <NavbarLink
               key={`menu ${i}`}
