@@ -1,5 +1,5 @@
 import { FC, ReactNode, useEffect } from 'react'
-import { Inconsolata, Jost, Press_Start_2P, Quicksand } from '@next/font/google'
+import { Inconsolata, Jost, Press_Start_2P, Quicksand } from "next/font/google";
 import Header from './header'
 import Footer from './footer'
 import { useRouter } from 'next/router'

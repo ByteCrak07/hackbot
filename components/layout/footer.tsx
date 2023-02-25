@@ -37,6 +37,13 @@ const AppFooter: FC = () => (
               <FooterLink href="/contact">Contact us</FooterLink>
             </Footer.LinkGroup>
           </div>
+          <div>
+            <Footer.Title title="Legal" />
+            <Footer.LinkGroup col={true}>
+              <FooterLink href="privacy">Privacy Policy</FooterLink>
+              <FooterLink href="terms">Terms & Conditions</FooterLink>
+            </Footer.LinkGroup>
+          </div>
         </div>
       </div>
       <Footer.Divider />
