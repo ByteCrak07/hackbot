@@ -1,8 +1,10 @@
-import { FC, ReactNode, useEffect } from 'react'
-import { Inconsolata, Jost, Press_Start_2P, Quicksand } from "next/font/google";
+import { FC, ReactNode, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { Inconsolata, Jost, Press_Start_2P, Quicksand } from 'next/font/google'
+import { Toaster } from 'sonner'
+import Analytics from './analytics'
 import Header from './header'
 import Footer from './footer'
-import { useRouter } from 'next/router'
 
 const jost = Jost({
   subsets: ['latin'],
@@ -20,17 +22,41 @@ const press_start_2p = Press_Start_2P({ weight: '400', subsets: ['latin'] })
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.classList.add('dark')
+      setIsDarkMode(true)
     } else {
       document.documentElement.classList.remove('dark')
+      setIsDarkMode(false)
+    }
+  }, [])
+
+  // observe class of html to detect change in darkmode
+  useEffect(() => {
+    const observer = new MutationObserver((record) => {
+      if ((record[0].target as HTMLElement).className === 'dark')
+        setIsDarkMode(true)
+      else setIsDarkMode(false)
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+      childList: false,
+      characterData: false,
+    })
+
+    return () => {
+      observer.disconnect()
     }
   }, [])
 
   return (
     <>
+      <Analytics />
       <style jsx global>
         {`
           #__next {
@@ -57,6 +83,12 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
         {children}
       </main>
       <Footer />
+      <Toaster
+        closeButton
+        richColors
+        position="bottom-right"
+        theme={isDarkMode ? 'dark' : 'light'}
+      />
     </>
   )
 }

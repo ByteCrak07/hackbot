@@ -8,13 +8,13 @@ import { RiMenu3Fill } from 'react-icons/ri'
 import DarkModeBtn from './dark-mode-btn'
 import NavbarLink from '../ui/flowbite-custom/navbar-link'
 import NavbarBrand from '../ui/flowbite-custom/navbar-brand'
+import { usePbAuth } from '../../contexts/AuthWrapper'
 
 const Header: FC<{}> = () => {
-  const [user, setUser] = useState<null | { name: string; username: string }>(
-    null
-  )
+  const { user, signOut } = usePbAuth()
 
   const router = useRouter()
+
   const [transparentHeader, setTransparentHeader] = useState(
     router.pathname === '/' ? true : false
   )
@@ -106,16 +106,14 @@ const Header: FC<{}> = () => {
 
           {!user ? (
             <div className="scale-90 md:scale-100">
-              <Button
-                onClick={() =>
-                  setUser({ name: 'Shashi Soman', username: '@shashi' })
-                }
+              <Link
+                href="/signin"
+                className="flex items-center justify-center rounded-lg border border-transparent bg-blue-700 p-0.5 text-center font-medium text-white hover:bg-blue-800 disabled:hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 dark:disabled:hover:bg-blue-600"
               >
-                Sign In
-              </Button>
-              {/* <Link href="/signin">
-                <Button>Sign In</Button>
-              </Link> */}
+                <span className="flex items-center rounded-md px-4 py-2 text-sm">
+                  Sign In
+                </span>
+              </Link>
             </div>
           ) : (
             <Dropdown
@@ -124,7 +122,7 @@ const Header: FC<{}> = () => {
               label={
                 <Avatar
                   alt="User settings"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  img={user.avatarUrl}
                   rounded={true}
                 />
               }
@@ -132,7 +130,7 @@ const Header: FC<{}> = () => {
               <Dropdown.Header>
                 <span className="block text-sm">{user.name}</span>
                 <span className="block truncate text-sm font-medium">
-                  {user.username}
+                  {user.email}
                 </span>
               </Dropdown.Header>
               {profileDropdowns.map((dropdown, i) => (
@@ -141,9 +139,7 @@ const Header: FC<{}> = () => {
                 </Link>
               ))}
               <Dropdown.Divider />
-              <Dropdown.Item onClick={() => setUser(null)}>
-                Sign out
-              </Dropdown.Item>
+              <Dropdown.Item onClick={signOut}>Sign out</Dropdown.Item>
             </Dropdown>
           )}
           <Navbar.Toggle
