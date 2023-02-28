@@ -1,23 +1,18 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Roboto } from 'next/font/google'
-import RingSpinner from '../spinners/ringSpinner'
+import { HashLoader } from 'react-spinners'
 import { SignInBtn } from '.'
 
 const roboto = Roboto({ weight: '500', subsets: ['latin'] })
 
-const GithubSignInBtn: FC<SignInBtn> = ({ signInFn, isSelected, disabled }) => {
-  const [isLoading, setIsLoading] = useState(false)
-
+const GithubSignInBtn: FC<SignInBtn> = ({ onClick, isSelected, disabled }) => {
   return (
     <>
       <button
         type="button"
         className={`flex w-56 items-center justify-center rounded bg-[#333333] px-4 py-3 text-sm text-white drop-shadow focus:outline-none ${roboto.className}`}
-        onClick={() => {
-          setIsLoading(true)
-          signInFn()
-        }}
-        disabled={disabled ? disabled : isLoading}
+        onClick={onClick}
+        disabled={disabled}
       >
         <span>
           <svg
@@ -34,11 +29,10 @@ const GithubSignInBtn: FC<SignInBtn> = ({ signInFn, isSelected, disabled }) => {
           </svg>
         </span>
         <span className="px-4">Sign in with GitHub</span>
-        <span>
-          <RingSpinner
-            width={18}
-            color={isSelected || isLoading ? '#fff' : 'transparent'}
-          />
+        <span className="w-[18px]">
+          {isSelected ? (
+            <HashLoader key="github" size={18} color="#fff" />
+          ) : null}
         </span>
       </button>
     </>

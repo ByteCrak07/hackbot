@@ -96,12 +96,20 @@ const SignIn: NextPage = () => {
           <div className="flex justify-center md:justify-start">
             <div className="flex flex-col items-center gap-y-4 rounded-2xl bg-gray-500 bg-opacity-10 p-5 dark:bg-white dark:bg-opacity-10 md:p-10">
               <GoogleSignInBtn
-                signInFn={googleSignIn}
+                onClick={() => {
+                  setDisableSignIn(true)
+                  setSignInMethod('google')
+                  googleSignIn()
+                }}
                 disabled={disableSignIn}
                 isSelected={signInMethod === 'google'}
               />
               <GithubSignInBtn
-                signInFn={githubSignIn}
+                onClick={() => {
+                  setDisableSignIn(true)
+                  setSignInMethod('github')
+                  githubSignIn()
+                }}
                 disabled={disableSignIn}
                 isSelected={signInMethod === 'github'}
               />

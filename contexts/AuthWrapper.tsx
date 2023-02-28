@@ -7,6 +7,7 @@ import {
   useState,
 } from 'react'
 import { useRouter } from 'next/router'
+import { toast } from 'sonner'
 import pb from '../lib/pocketbase'
 import type { AuthProviderInfo, Record as PbRecord } from 'pocketbase'
 
@@ -70,7 +71,8 @@ const AuthWrapper: FC<{ children: ReactNode }> = ({ children }) => {
     const redirectUrl = `${location.origin}/signin`
     const url = googleAuthProvider?.authUrl + redirectUrl
 
-    router.push(url)
+    if (!googleAuthProvider) toast.error('Google sign in not available')
+    else router.push(url)
   }
 
   const githubSignIn = () => {
@@ -79,7 +81,8 @@ const AuthWrapper: FC<{ children: ReactNode }> = ({ children }) => {
     const redirectUrl = `${location.origin}/signin`
     const url = githubAuthProvider?.authUrl + redirectUrl
 
-    router.push(url)
+    if (!githubAuthProvider) toast.error('GitHub sign in not available')
+    else router.push(url)
   }
 
   const signOut = () => {
